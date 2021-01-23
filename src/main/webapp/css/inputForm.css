@@ -1,0 +1,63 @@
+html {
+    display: block;
+    background-color: #2D3D2E;
+}
+
+form {
+    width: 150px;
+    color: white;
+    font-family: Raleway;
+}
+
+label {
+    bottom: 5px;
+    position: relative;
+}
+
+input[type=text], [type=checkbox] {
+    margin-bottom: 15px;
+    font-family: Montserrat;
+    transition: width 0.8s ease-in;
+    height: 20px;
+    outline: none;
+}
+
+input[type=text]:focus {
+    width: 150%;
+}
+
+.submit {
+    background-color: #646E44;
+    width: 150px;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    border: none;
+    transition: all 0.2s ease-in;
+    outline: none;
+}
+
+.submit:hover {
+    transform: translateY(-5px);
+    opacity: 0.8;
+}
+
+.characteristic {
+    color: white;
+    font-family: Raleway;
+    margin-top: 10px;
+    margin-left: 15px;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.2;
+    display: flex;
+    width: 300%;
+}
+
+.charact-name {
+    margin-right: 10px;
+}
+
+.charact-value {
+
+}

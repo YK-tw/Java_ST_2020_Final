@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="ALL">
+    <Properties>
+        <Property name="patternfull">
+            %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{5} - %msg%n
+        </Property>
+        <Property name="patternshort">
+            %d{HH:mm:ss.SSS} [%t] %-5level %logger{1} - %msg%n
+        </Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${patternshort}"/>
+        </Console>
+        <File name="TxtFile" fileName="logs/log.txt" bufferedIO="true">
+            <PatternLayout pattern="${patternfull}"/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="by.training.finalp.action.administrator.ProductDeleteAction" level="all"
+                additivity="true">
+            <AppenderRef ref="TxtFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="by.training.finalp.action.administrator.ProductSaveAction" level="all"
+                additivity="true">
+            <AppenderRef ref="TxtFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="by.training.finalp.action.administrator.ProductUpdateAction" level="all"
+                additivity="true">
+            <AppenderRef ref="TxtFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="by.training.finalp.action.administrator.UserDeleteAction" level="all"
+                additivity="true">
+            <AppenderRef ref="TxtFile"/>
+        </Logger>
+        <Logger name="by.training.finalp.action.administrator.UserRoleDowngradeAction" level="all"
+                additivity="true">
+            <AppenderRef ref="TxtFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="by.training.finalp.action.administrator.UserRoleUpgradeAction" level="all"
+                additivity="true">
+            <AppenderRef ref="TxtFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="by.training.finalp.action.CatalogAction" level="all"
+                additivity="true">
+            <AppenderRef ref="TxtFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="by.training.finalp.action.LoginAction" level="all"
+                additivity="true">
+            <AppenderRef ref="TxtFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="by.training.finalp.action.LogoutAction" level="all"
+                additivity="true">
+            <AppenderRef ref="TxtFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="by.training.finalp.action.RegisterAction" level="all"
+                additivity="true">
+            <AppenderRef ref="TxtFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+
+        <!-- Root Logger -->
+        <Root level="all">
+            <AppenderRef ref="TxtFile"/>
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+
+
+</Configuration>

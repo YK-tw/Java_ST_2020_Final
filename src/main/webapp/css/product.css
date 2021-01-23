@@ -1,0 +1,197 @@
+#dropdownSearch {
+    top: 40px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.search {
+    top: 36px;
+}
+
+.header-link {
+    top: 36px;
+}
+
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding-top: 70px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.images {
+    width: 650px;
+}
+
+.info {
+    width: 500px;
+}
+
+.main-img {
+    width: 400px;
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+.product-name {
+    color: white;
+    font-family: Raleway;
+    font-size: 35px;
+    line-height: 41px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.existence {
+    display: flex;
+    font-family: Raleway;
+    margin-top: 20px;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.existence-green {
+    color: #646E44;
+    margin-left: 20px;
+}
+
+.existence-red {
+    color: #ff1155;
+    margin-left: 20px;
+}
+
+.existence-white {
+    color: white;
+}
+
+.size-text {
+    color: white;
+    font-family: Raleway;
+    margin-top: 20px;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.sizes {
+    display: flex;
+    font-family: Montserrat;
+    margin-top: 20px;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.2;
+    color: white;
+    width: 300px;
+    flex-wrap: wrap;
+}
+
+.sizes > p {
+    background-color: #646E44;
+    width: 40px;
+    height: 40px;
+    padding: 8px 3px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.price {
+    color: white;
+    font-family: Montserrat;
+    text-align: left;
+    font-size: 25px;
+    line-height: 1.28;
+}
+
+.description-name {
+    color: white;
+    font-family: Raleway;
+    margin-top: 20px;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.description-value {
+    color: white;
+    font-family: Raleway;
+    margin-top: 20px;
+    margin-left: 15px;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.2;
+    width: 400px;
+}
+
+.characteristic {
+    color: white;
+    font-family: Raleway;
+    margin-top: 10px;
+    margin-left: 15px;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.2;
+    display: flex;
+}
+
+.charact-name {
+    margin-right: 10px;
+}
+
+.charact-value {
+
+}
+
+.order {
+    color: white;
+    background-color: #646E44;
+    border: 0;
+    width: 180px;
+    height: 50px;
+    font-family: Raleway;
+    font-size: 25px;
+    line-height: 1.2;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    outline: none;
+    transition: all 0.2s ease-in;
+}
+
+.order:hover {
+    background-color: #2D3D2E;
+    transform: translateY(-5px);
+}
+
+.change {
+    color: white;
+    background-color: #646E44;
+    border: 0;
+    width: 150px;
+    height: 40px;
+    font-family: Raleway;
+    font-size: 20px;
+    line-height: 1.2;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    outline: none;
+    transition: all 0.2s ease-in;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.change:hover {
+    background-color: #2D3D2E;
+    transform: translateY(-5px);
+}

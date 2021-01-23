@@ -1,0 +1,282 @@
+#dropdownSearch {
+    top: 40px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.search {
+    top: 36px;
+}
+
+.header-link {
+    top: 36px;
+}
+
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding-top: 70px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main {
+    width: 870px;
+}
+
+.cards-holder {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.cards-holder > .card-link {
+    margin-bottom: 31px;
+}
+
+.sidebar {
+    width: 270px;
+}
+
+/*Card*/
+
+a.card-link {
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.2s ease-in;
+}
+
+a.card-link:hover {
+    opacity: 0.8;
+    transform: translateY(-5px);
+}
+
+.card {
+    width: 260px;
+}
+
+.card__img {
+
+}
+
+.card__content {
+    color: white;
+    font-family: Raleway;
+    text-align: center;
+}
+
+.card__title {
+    font-size: 25px;
+    line-height: 1.16;
+    text-transform: capitalize;
+}
+
+.card__price {
+    font-family: Montserrat;
+    font-size: 20px;
+    line-height: 1.2;
+    text-transform: capitalize;
+}
+
+.pagination {
+    display: inline-block;
+    margin: 0 37%;
+}
+
+.pagination a {
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-family: Montserrat;
+    font-size: 20px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: white;
+}
+
+.pagination a.active {
+    text-decoration: underline;
+    color: #646E44;
+}
+
+.pagination a:hover:not(.active) {
+    color: gray;
+}
+
+/*Sidebar*/
+
+.widget {
+    position: relative;
+    left: 620px;
+    width: 250px;
+    margin-bottom: 20px;
+}
+
+.widget-title {
+    color: white;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 1.16;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.widget-title > input {
+    background-color: black;
+    border: 0;
+    color: white;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 1.2;
+    width: 50px;
+    height: 30px;
+    margin-left: 23px;
+    outline: none;
+    position: relative;
+}
+
+.widget-title:after {
+    content: "";
+    width: 12px;
+    height: 7px;
+    background-image: url("../img/main/svg/VectorArrowSmall.svg");
+    position: absolute;
+    right: 30px;
+    top: 11px;
+}
+
+.filter {
+    color: white;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 35px;
+    line-height: 1.175;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.widget-sidebar {
+    color: white;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.widget-sidebar + .widget-sidebar {
+    margin-top: 30px;
+}
+
+.widget-sidebar-title {
+    font-size: 25px;
+    line-height: 1.2;
+    position: relative;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.widget-sidebar-body-hidden {
+    display: none;
+}
+
+.widget-sidebar-title:after {
+    content: "";
+    width: 12px;
+    height: 7px;
+    background-image: url("../img/main/svg/VectorArrowSmall.svg");
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+
+.widget-sidebar-title-active:after {
+    transform: rotate(180deg);
+}
+
+.radio {
+    display: block;
+    cursor: pointer;
+}
+
+.radio + .radio {
+    margin-top: 10px;
+}
+
+.radio__real {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    opacity: 0;
+    appearance: none;
+}
+
+.radio__real:checked + .radio__fake {
+    background-color: #646E44;
+}
+
+.radio__fake {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #FFFFFF;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 15px;
+    vertical-align: -2px;
+}
+
+.radio__title {
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.filter-button {
+    display: block;
+    font-family: Raleway;
+    width: 100%;
+    margin-top: 20px;
+    height: 40px;
+    font-size: 20px;
+    border: 0;
+    background-color: #646E44;
+    color: white;
+}
+
+.filter-button:hover {
+    background-color: #2D3D2E;
+}
+
+.filter-button {
+    transition: all 0.2s ease-in;
+    outline: none;
+}
+
+.not-found {
+    color: white;
+    font-family: Raleway;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+a {
+    text-align: center;
+}

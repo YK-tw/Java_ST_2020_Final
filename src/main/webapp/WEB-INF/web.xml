@@ -1,0 +1,40 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <display-name>Archetype Created Web Application</display-name>
+    <filter>
+        <filter-name>CookieLocaleFilter</filter-name>
+        <filter-class>by.training.finalp.controller.CookieLocaleFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CookieLocaleFilter</filter-name>
+        <url-pattern>*.html</url-pattern>
+    </filter-mapping>
+    <servlet>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <servlet-class>by.training.finalp.controller.DispatcherServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>by.training.finalp.controller.EncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>*.html</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>ActionFromUriFilter</filter-name>
+        <filter-class>by.training.finalp.controller.ActionFromUriFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ActionFromUriFilter</filter-name>
+        <url-pattern>*.html</url-pattern>
+    </filter-mapping>
+
+</web-app>

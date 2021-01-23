@@ -1,0 +1,220 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    display: block;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+* {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header-text {
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+
+    color: #FFFFFF;
+    text-align: center;
+
+    margin: 20px 0 20px;
+    height: 30px;
+    width: 100%;
+}
+
+.header-green {
+    width: 100%;
+    height: 100px;
+
+    background: #2D3D2E;
+    display: inline-block;
+}
+
+.dropbtn {
+    position: absolute;
+    background: #2D3D2E;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 29px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    width: 37px;
+    height: 29px;
+    top: 20px;
+    padding: 0;
+    outline: none;
+}
+
+.lang {
+    left: 120px;
+}
+
+.money {
+    left: 200px;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background: #2D3D2E;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+
+    background-color: #f1f1f1;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.lang-dropdown {
+    top: 50px;
+    left: 120px;
+}
+
+.money-dropdown {
+    top: 50px;
+    left: 200px;
+}
+
+.dropdown-content a {
+    color: white;
+    font-family: Raleway;
+    text-decoration: none;
+    padding: 6px 8px;
+    display: block;
+    background: #203B2F;
+}
+
+.dropdown a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+
+.header-name-img {
+    position: absolute;
+    margin-left: 42.5%;
+    margin-top: 16px;
+}
+
+.search {
+    position: absolute;
+    border: 0;
+    background-image: url("../img/main/svg/Group 6.svg");
+    background-color: #2D3D2E;
+    width: 27px;
+    height: 28px;
+    right: 17%;
+    top: 106px;
+    outline: none;
+    cursor: pointer;
+}
+
+#dropdownSearch {
+    position: absolute;
+    width: 13%;
+    right: 20%;
+    top: 110px;
+    display: none;
+    outline: none;
+    border: 0;
+}
+
+.header-link {
+    position: absolute;
+    height: 28px;
+    top: 106px;
+    background-size: cover;
+}
+
+.profile {
+    background-image: url("../img/main/svg/Group 5.svg");
+    right: 12%;
+    width: 26px;
+}
+
+.basket {
+    background-image: url("../img/main/svg/Group 4.svg");
+    right: 7%;
+    width: 31px;
+}
+
+.header-dark-green {
+    width: 100%;
+    height: 60px;
+    background: #1A211B;
+}
+
+.header-link-list {
+    display: inline-block;
+    color: white;
+    font-family: Raleway;
+    width: 24%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 29px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 15px;
+}
+
+.choose-block {
+
+}
+
+.choose-section {
+    float: left;
+    width: 33.333%;
+    display: flex;
+}
+
+.choose-section > img {
+    height: auto;
+    width: 100%;
+}
+
+.choose-section > p {
+    position: relative;
+    right: 100%;
+    height: 1%;
+    top: 30px;
+    font-family: Raleway;
+    padding: 6px 14px;
+    font-size: 20px;
+    line-height: 29px;
+    letter-spacing: 0.05em;
+    background-color: #646E44;
+    color: white;
+    text-transform: uppercase;
+}
+
+.first {
+    padding-top: 70px;
+}
