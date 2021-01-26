@@ -27,13 +27,22 @@ public class CatalogAction extends AuthorizedUserAction {
                 }
             }
         }
-        if (request.getParameter("page") != null) {
+
+        ProductService service = factory.getService(ProductService.class);
+        Integer pageAmount;
+        Integer productsAmount = service.readAmount();
+        if (productsAmount % pageSize > 0) {
+            pageAmount = productsAmount / pageSize + 1;
+        } else {
+            pageAmount = productsAmount / pageSize;
+        }
+        request.getSession().setAttribute("pages", pageAmount);
+        if (request.getParameter("page") != null && Integer.parseInt(request.getParameter("page")) <= pageAmount) {
             page = Integer.parseInt(request.getParameter("page"));
         } else {
             page = 1;
         }
-
-        ProductService service = factory.getService(ProductService.class);
+        request.setAttribute("page", page);
         if (attribute != null && !attribute.equals("")) {
             List<Product> products = service.findByAttribute(attribute);
             List<Product> productList = new ArrayList<>();
@@ -43,7 +52,7 @@ public class CatalogAction extends AuthorizedUserAction {
             }
             request.setAttribute("products", productList);
         } else {
-            request.setAttribute("products", service.readFromTo((page - 1) * pageSize + 1, pageSize));
+            request.setAttribute("products", service.readFromTo((page - 1) * pageSize, pageSize));
         }
         return forward;
 

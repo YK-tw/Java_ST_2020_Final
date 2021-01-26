@@ -145,17 +145,45 @@
                 </c:otherwise>
             </c:choose>
             <div class="pagination">
-                <c:forEach var="i" begin="1" end="${cookie['pages'].value}">
-                    <c:choose>
-                        <c:when test="${param.page == i}">
-                            <a class="active" href="?page=${i}&attribute=${param['attribute']}">${i}</a>
-                        </c:when>
-                        <c:otherwise>
-                            <a href="?page=${i}&attribute=${param['attribute']}">${i}</a>
-                        </c:otherwise>
-                    </c:choose>
 
-                </c:forEach>
+                <c:choose>
+                    <c:when test="${requestScope.page == 1 && sessionScope.pages > 2}">
+                        <c:forEach var="i" begin="1" end="3">
+                            <c:choose>
+                                <c:when test="${requestScope.page == i}">
+                                    <a class="active" href="?page=${i}&attribute=${param['attribute']}">${i}</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="?page=${i}&attribute=${param['attribute']}">${i}</a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                    </c:when>
+                    <c:when test="${requestScope.page == sessionScope.pages && sessionScope.pages > 2}">
+                        <c:forEach var="i" begin="${sessionScope.pages-2}" end="${sessionScope.pages}">
+                            <c:choose>
+                                <c:when test="${requestScope.page == i}">
+                                    <a class="active" href="?page=${i}&attribute=${param['attribute']}">${i}</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="?page=${i}&attribute=${param['attribute']}">${i}</a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach var="i" begin="${requestScope.page-1}" end="${requestScope.page+1}">
+                            <c:choose>
+                                <c:when test="${requestScope.page == i}">
+                                    <a class="active" href="?page=${i}&attribute=${param['attribute']}">${i}</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="?page=${i}&attribute=${param['attribute']}">${i}</a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </div>
