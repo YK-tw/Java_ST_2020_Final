@@ -50,7 +50,7 @@
 <div class="container">
     <div class="row">
         <div class="sidebar">
-            <form method="post" action="?${pageContext.request.queryString}">
+            <form method="post" action="${pageContext.request.contextPath}/catalog.html?page=1">
                 <div class="filter"><fmt:message key="filter"/></div>
                 <!-- Widget -->
                 <div class="widget-sidebar">
@@ -59,17 +59,17 @@
                     </div>
                     <div class="widget-sidebar-body">
                         <label class="radio">
-                            <input type="radio" class="radio__real" name="material">
+                            <input type="radio" class="radio__real" name="cupronickel">
                             <span class="radio__fake"></span>
                             <span class="radio__title"><fmt:message key="cupronickel"/></span>
                         </label>
                         <label class="radio">
-                            <input type="radio" class="radio__real" name="material">
+                            <input type="radio" class="radio__real" name="nickelsilver">
                             <span class="radio__fake"></span>
                             <span class="radio__title"><fmt:message key="nickelsilver"/></span>
                         </label>
                         <label class="radio">
-                            <input type="radio" class="radio__real" name="material">
+                            <input type="radio" class="radio__real" name="brass">
                             <span class="radio__fake"></span>
                             <span class="radio__title"><fmt:message key="brass"/></span>
                         </label>
@@ -83,19 +83,58 @@
                     </div>
                     <div class="widget-sidebar-body">
                         <label class="radio">
-                            <input type="radio" class="radio__real" name="inlay">
+                            <input type="radio" class="radio__real" name="stone">
                             <span class="radio__fake"></span>
                             <span class="radio__title"><fmt:message key="stone"/></span>
                         </label>
                         <label class="radio">
-                            <input type="radio" class="radio__real" name="inlay">
+                            <input type="radio" class="radio__real" name="wood">
                             <span class="radio__fake"></span>
                             <span class="radio__title"><fmt:message key="wood"/></span>
                         </label>
                         <label class="radio">
-                            <input type="radio" class="radio__real" name="inlay">
+                            <input type="radio" class="radio__real" name="pearl">
                             <span class="radio__fake"></span>
                             <span class="radio__title"><fmt:message key="pearl"/></span>
+                        </label>
+                    </div>
+                </div>
+                <!-- //Widget -->
+                <!-- Widget -->
+                <div class="widget-sidebar">
+                    <div class="widget-sidebar-title">
+                        <fmt:message key="form"/>
+                    </div>
+                    <div class="widget-sidebar-body">
+                        <label class="radio">
+                            <input type="radio" class="radio__real" name="earrings">
+                            <span class="radio__fake"></span>
+                            <span class="radio__title"><fmt:message key="earrings"/></span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" class="radio__real" name="ring">
+                            <span class="radio__fake"></span>
+                            <span class="radio__title"><fmt:message key="ring"/></span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" class="radio__real" name="bracelet">
+                            <span class="radio__fake"></span>
+                            <span class="radio__title"><fmt:message key="bracelet"/></span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" class="radio__real" name="cuff">
+                            <span class="radio__fake"></span>
+                            <span class="radio__title"><fmt:message key="cuff"/></span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" class="radio__real" name="chain">
+                            <span class="radio__fake"></span>
+                            <span class="radio__title"><fmt:message key="chain"/></span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" class="radio__real" name="pendant">
+                            <span class="radio__fake"></span>
+                            <span class="radio__title"><fmt:message key="pendant"/></span>
                         </label>
                     </div>
                 </div>
@@ -151,10 +190,10 @@
                         <c:forEach var="i" begin="1" end="${sessionScope.pages}">
                             <c:choose>
                                 <c:when test="${requestScope.page == i}">
-                                    <a class="active" href="?page=${i}&attribute=${param['attribute']}">${i}</a>
+                                    <a class="active" href="?page=${i}&attribute=${requestScope.attribute}">${i}</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="?page=${i}&attribute=${param['attribute']}">${i}</a>
+                                    <a href="?page=${i}&attribute=${requestScope.attribute}">${i}</a>
                                 </c:otherwise>
                             </c:choose>
                         </c:forEach>
@@ -163,10 +202,10 @@
                         <c:forEach var="i" begin="1" end="3">
                             <c:choose>
                                 <c:when test="${requestScope.page == i}">
-                                    <a class="active" href="?page=${i}&attribute=${param['attribute']}">${i}</a>
+                                    <a class="active" href="?page=${i}&attribute=${requestScope.attribute}">${i}</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="?page=${i}&attribute=${param['attribute']}">${i}</a>
+                                    <a href="?page=${i}&attribute=${requestScope.attribute}">${i}</a>
                                 </c:otherwise>
                             </c:choose>
                         </c:forEach>
@@ -175,10 +214,10 @@
                         <c:forEach var="i" begin="${sessionScope.pages-2}" end="${sessionScope.pages}">
                             <c:choose>
                                 <c:when test="${requestScope.page == i}">
-                                    <a class="active" href="?page=${i}&attribute=${param['attribute']}">${i}</a>
+                                    <a class="active" href="?page=${i}&attribute=${requestScope.attribute}">${i}</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="?page=${i}&attribute=${param['attribute']}">${i}</a>
+                                    <a href="?page=${i}&attribute=${requestScope.attribute}">${i}</a>
                                 </c:otherwise>
                             </c:choose>
                         </c:forEach>
@@ -187,10 +226,10 @@
                         <c:forEach var="i" begin="${requestScope.page-1}" end="${requestScope.page+1}">
                             <c:choose>
                                 <c:when test="${requestScope.page == i}">
-                                    <a class="active" href="?page=${i}&attribute=${param['attribute']}">${i}</a>
+                                    <a class="active" href="?page=${i}&attribute=${requestScope.attribute}">${i}</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="?page=${i}&attribute=${param['attribute']}">${i}</a>
+                                    <a href="?page=${i}&attribute=${requestScope.attribute}">${i}</a>
                                 </c:otherwise>
                             </c:choose>
                         </c:forEach>
