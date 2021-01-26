@@ -13,4 +13,6 @@ public interface ProductDAO extends DAO<Product> {
     List<Product> getProductsByAttributeId(Integer attrId) throws DAOException;
 
     List<Product> readFromTo(Integer from, Integer to) throws DAOException;
+
+    Integer readAmount() throws DAOException;
 }

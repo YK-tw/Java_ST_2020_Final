@@ -68,12 +68,22 @@ public class ProductServiceImpl extends ServiceImpl implements ProductService {
         try {
             ProductDAO productDAO = transaction.createDao(ProductDAO.class);
             products = productDAO.readFromTo(from, to);
-
-
         } catch (DAOException e) {
             throw new ServiceException(e);
         }
         return products;
+    }
+
+    @Override
+    public Integer readAmount() throws ServiceException {
+        Integer amount;
+        try {
+            ProductDAO productDAO = transaction.createDao(ProductDAO.class);
+            amount = productDAO.readAmount();
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+        return amount;
     }
 
     private Product buildProduct(final Product product) throws ServiceException {

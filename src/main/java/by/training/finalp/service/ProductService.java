@@ -17,4 +17,5 @@ public interface ProductService extends Service {
 
     List<Product> readFromTo(Integer from, Integer to) throws ServiceException;
 
+    Integer readAmount() throws ServiceException;
 }

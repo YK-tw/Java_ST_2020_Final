@@ -23,7 +23,7 @@
 </head>
 <body>
 <c:url value="/product/save.html" var="productSaveUrl"/>
-<form action="${productSaveUrl}" method="post">
+<form action="${productSaveUrl}" method="post" onsubmit="return validateSaveProduct(this)">
     <input type="text" name="id" value="${product.id}" style="display: none">
     <label>Name</label>
     <input type="text" name="name" value="${product.name}">

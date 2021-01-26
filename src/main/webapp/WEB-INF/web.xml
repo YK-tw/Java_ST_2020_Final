@@ -12,6 +12,14 @@
         <filter-name>CookieLocaleFilter</filter-name>
         <url-pattern>*.html</url-pattern>
     </filter-mapping>
+    <filter>
+        <filter-name>CatalogSizeFilter</filter-name>
+        <filter-class>by.training.finalp.controller.CatalogSizeFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CatalogSizeFilter</filter-name>
+        <url-pattern>*.html</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>DispatcherServlet</servlet-name>
         <servlet-class>by.training.finalp.controller.DispatcherServlet</servlet-class>

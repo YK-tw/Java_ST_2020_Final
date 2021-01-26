@@ -37,6 +37,7 @@
         <Logger name="by.training.finalp.action.administrator.UserDeleteAction" level="all"
                 additivity="true">
             <AppenderRef ref="TxtFile"/>
+            <AppenderRef ref="Console"/>
         </Logger>
         <Logger name="by.training.finalp.action.administrator.UserRoleDowngradeAction" level="all"
                 additivity="true">

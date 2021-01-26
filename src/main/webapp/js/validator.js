@@ -1,16 +1,16 @@
 function validateSaveProduct(form) {
     if (!validateForm(form, [{
         id: "name",
-        message: "Поле «Инвентарный номер» должно быть задано в формате АБ###### или ЧЗ######<BR>(# - обязательная цифра)",
-        checker: checkNotEmpty
+        message: "Поле «Name» некорректно заполнено",
+        checker: checkText
     }, {
         id: "price",
-        message: "Поле «Цена» не заполнено",
-        checker: checkNotEmpty
+        message: "Поле «Price» некорректно заполнено",
+        checker: checkPositiveNumber
     }, {
         id: "description",
-        message: "Поле «Описание» не заполнено",
-        checker: checkNotEmpty
+        message: "Поле «Description» некорректно заполнено",
+        checker: checkText
     }])) {
         console.log('false');
         return false;
@@ -19,12 +19,12 @@ function validateSaveProduct(form) {
     return true;
 }
 
-function checkPositiveInteger(value) {
-    return checkInteger(value) && value > 0;
+function checkText(value) {
+    return checkRegexp(value, "^[a-zA-Z0-9\\s.,!\"'%\\^*?]+$");
 }
 
-function checkInteger(value) {
-    return checkNumber(value) && value == Math.round(value);
+function checkPositiveNumber(value) {
+    return checkNumber(value) && value > 0;
 }
 
 function checkNumber(value) {
@@ -33,10 +33,6 @@ function checkNumber(value) {
 
 function checkRegexp(value, regexp) {
     return new RegExp(regexp).test(value);
-}
-
-function checkNotEmpty(value) {
-    return value.length != 0;
 }
 
 function validateForm(form, data) {
@@ -53,4 +49,38 @@ function errorMessage(element, message) {
     show(message, function () {
         element.focus()
     });
+}
+
+function show(message, action) {
+    showMessage(message, [{
+        caption: "Закрыть",
+        handler: (action !== undefined ? action : function () {
+        })
+    }]);
+}
+
+
+function showMessage(message, buttons) {
+    var body = document.getElementsByTagName("body")[0];
+    var messageElement = document.createElement("div");
+    messageElement.id = "confirm-message";
+    var messageContent = document.createElement("div");
+    var messageText = document.createElement("p");
+    messageText.innerHTML = message;
+    messageContent.appendChild(messageText);
+    var buttonsElement = document.createElement("form");
+    for (var index = 0, size = buttons.length; index < size; index++) {
+        var button = document.createElement("button");
+        button.type = "button";
+        button.handler = buttons[index];
+        button.onclick = function () {
+            body.removeChild(messageElement);
+            this.handler.handler();
+        }
+        button.appendChild(document.createTextNode(buttons[index].caption));
+        buttonsElement.appendChild(button);
+    }
+    messageContent.appendChild(buttonsElement);
+    messageElement.appendChild(messageContent);
+    body.insertBefore(messageElement, body.firstChild);
 }

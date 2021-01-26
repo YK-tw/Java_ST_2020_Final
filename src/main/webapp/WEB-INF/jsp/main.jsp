@@ -27,7 +27,15 @@
 <p class="header-text"><fmt:message key="header"/></p>
 <div class="header-green">
     <div class="dropdown">
-        <button onclick="dropdownFunction('dropdownLang')" class="dropbtn lang">${cookie['lang'].value}</button>
+        <c:choose>
+            <c:when test="${!(cookie['lang'].value.equals('en'))}">
+                <button onclick="dropdownFunction('dropdownLang')" class="dropbtn lang">RU</button>
+            </c:when>
+            <c:otherwise>
+                <button onclick="dropdownFunction('dropdownLang')" class="dropbtn lang">${cookie['lang'].value}</button>
+            </c:otherwise>
+        </c:choose>
+
         <div id="dropdownLang" class="dropdown-content lang-dropdown">
             <a href="?cookieLocale=ru">RU</a>
             <a href="?cookieLocale=en">EN</a>

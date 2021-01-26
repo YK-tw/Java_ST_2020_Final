@@ -98,12 +98,15 @@
                     <c:url value="/product/delete.html" var="productDelUrl"/>
                     <c:url value="/product/update.html" var="productUpdUrl"/>
                     <a href="${productUpdUrl}?id=${product.id}" class="change"><fmt:message key="change"/></a>
-                    <a href="${productDelUrl}?id=${product.id}" class="change"><fmt:message key="delete"/></a>
+                    <a href="${productDelUrl}?id=${product.id}"
+                       onclick="return confirm()"
+                       class="change"><fmt:message key="delete"/></a>
                 </c:when>
             </c:choose>
         </div>
     </div>
 </div>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/script.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/validator.js"></script>
 </body>
 </html>

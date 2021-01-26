@@ -217,7 +217,7 @@ public class ProductDAOImpl extends BaseDAO implements ProductDAO {
 
     @Override
     public List<Product> readFromTo(Integer from, Integer to) throws DAOException {
-        String sql = "SELECT id, name, price, existence, description, visibility FROM product WHERE id > ? AND id <= ?";
+        String sql = "SELECT id, name, price, existence, description, visibility FROM product LIMIT ?, ?";
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         ProductBuilder builder;
@@ -238,6 +238,33 @@ public class ProductDAOImpl extends BaseDAO implements ProductDAO {
                 products.add(builder.build());
             }
             return products;
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+            try {
+                resultSet.close();
+            } catch (SQLException | NullPointerException e) {
+            }
+            try {
+                statement.close();
+            } catch (SQLException | NullPointerException e) {
+            }
+        }
+    }
+
+    @Override
+    public Integer readAmount() throws DAOException {
+        String sql = "SELECT COUNT(id) FROM product";
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        Integer res = 0;
+        try {
+            statement = connection.prepareStatement(sql);
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                res = resultSet.getInt(1);
+            }
+            return res;
         } catch (SQLException e) {
             throw new DAOException(e);
         } finally {

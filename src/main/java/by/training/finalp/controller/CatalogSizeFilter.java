@@ -6,31 +6,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
-public class CookieLocaleFilter implements Filter {
+public class CatalogSizeFilter implements Filter {
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
 
-        Cookie lang = new Cookie("lang", "ru");
+        Cookie size = new Cookie("size", "12");
         if (req.getCookies() != null) {
             for (Cookie item : req.getCookies()) {
-                if (item.getName().equals("lang")) {
-                    lang = item;
+                if (item.getName().equals("size")) {
+                    size = item;
                     break;
                 }
             }
         }
-        if (req.getParameter("cookieLocale") != null) {
-            Cookie cookie = new Cookie("lang", req.getParameter("cookieLocale"));
+
+        if (req.getParameter("size") != null) {
+            Cookie cookie = new Cookie("size", req.getParameter("size"));
             res.addCookie(cookie);
             res.sendRedirect(res.encodeRedirectURL(req.getRequestURI())
-                    + "?" + req.getQueryString().replaceAll("cookieLocale=[a-z]{2}", ""));
+                    + "?" + req.getQueryString().replaceAll("size=[0-9]+", ""));
             return;
         } else {
-            res.addCookie(lang);
+            res.addCookie(size);
         }
         chain.doFilter(request, response);
     }

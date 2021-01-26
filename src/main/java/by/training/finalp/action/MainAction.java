@@ -8,4 +8,6 @@ public class MainAction extends AuthorizedUserAction {
     public Action.Forward exec(HttpServletRequest request, HttpServletResponse response) {
         return new Forward("/main.jsp", false);
     }
+
+
 }

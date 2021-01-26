@@ -112,9 +112,11 @@
         </div>
         <div class="main">
             <!-- Widget -->
-            <div class="widget">
-                <div class="widget-title"><fmt:message key="show"/><input type="number" value="24"></div>
-            </div>
+            <form class="widget" method="post" action="?${pageContext.request.queryString}&">
+                <div class="widget-title"><fmt:message key="show"/><input id="size" min="1" name="size" type="number"
+                                                                          value="${cookie['size'].value}"></div>
+                <input type="submit" style="display: none"/>
+            </form>
             <!-- //Widget -->
             <c:choose>
                 <c:when test="${empty products}">
@@ -143,7 +145,7 @@
                 </c:otherwise>
             </c:choose>
             <div class="pagination">
-                <c:forEach var="i" begin="1" end="3">
+                <c:forEach var="i" begin="1" end="${cookie['pages'].value}">
                     <c:choose>
                         <c:when test="${param.page == i}">
                             <a class="active" href="?page=${i}&attribute=${param['attribute']}">${i}</a>
@@ -160,5 +162,6 @@
 </div>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/script.js"></script>
+
 </body>
 </html>
