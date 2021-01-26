@@ -37,8 +37,10 @@ public class CatalogAction extends AuthorizedUserAction {
             pageAmount = productsAmount / pageSize;
         }
         request.getSession().setAttribute("pages", pageAmount);
-        if (request.getParameter("page") != null && Integer.parseInt(request.getParameter("page")) <= pageAmount) {
+        if (request.getParameter("page") != null) {
             page = Integer.parseInt(request.getParameter("page"));
+        } else if (Integer.parseInt(request.getParameter("page")) >= pageAmount) {
+            page = pageAmount;
         } else {
             page = 1;
         }

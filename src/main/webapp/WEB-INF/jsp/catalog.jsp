@@ -50,7 +50,7 @@
 <div class="container">
     <div class="row">
         <div class="sidebar">
-            <form>
+            <form method="post" action="?${pageContext.request.queryString}">
                 <div class="filter"><fmt:message key="filter"/></div>
                 <!-- Widget -->
                 <div class="widget-sidebar">
@@ -112,7 +112,7 @@
         </div>
         <div class="main">
             <!-- Widget -->
-            <form class="widget" method="post" action="?${pageContext.request.queryString}&">
+            <form class="widget" method="post" action="?${pageContext.request.queryString}">
                 <div class="widget-title"><fmt:message key="show"/><input id="size" min="1" name="size" type="number"
                                                                           value="${cookie['size'].value}"></div>
                 <input type="submit" style="display: none"/>
@@ -147,6 +147,18 @@
             <div class="pagination">
 
                 <c:choose>
+                    <c:when test="${sessionScope.pages < 3}">
+                        <c:forEach var="i" begin="1" end="${sessionScope.pages}">
+                            <c:choose>
+                                <c:when test="${requestScope.page == i}">
+                                    <a class="active" href="?page=${i}&attribute=${param['attribute']}">${i}</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="?page=${i}&attribute=${param['attribute']}">${i}</a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                    </c:when>
                     <c:when test="${requestScope.page == 1 && sessionScope.pages > 2}">
                         <c:forEach var="i" begin="1" end="3">
                             <c:choose>
