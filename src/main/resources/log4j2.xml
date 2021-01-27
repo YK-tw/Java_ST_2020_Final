@@ -22,59 +22,59 @@
         <Logger name="by.training.finalp.action.administrator.ProductDeleteAction" level="all"
                 additivity="true">
             <AppenderRef ref="TxtFile"/>
-            <AppenderRef ref="Console"/>
+<!--            <AppenderRef ref="Console"/>-->
         </Logger>
         <Logger name="by.training.finalp.action.administrator.ProductSaveAction" level="all"
                 additivity="true">
             <AppenderRef ref="TxtFile"/>
-            <AppenderRef ref="Console"/>
+<!--            <AppenderRef ref="Console"/>-->
         </Logger>
         <Logger name="by.training.finalp.action.administrator.ProductUpdateAction" level="all"
                 additivity="true">
             <AppenderRef ref="TxtFile"/>
-            <AppenderRef ref="Console"/>
+<!--            <AppenderRef ref="Console"/>-->
         </Logger>
         <Logger name="by.training.finalp.action.administrator.UserDeleteAction" level="all"
                 additivity="true">
             <AppenderRef ref="TxtFile"/>
-            <AppenderRef ref="Console"/>
+<!--            <AppenderRef ref="Console"/>-->
         </Logger>
         <Logger name="by.training.finalp.action.administrator.UserRoleDowngradeAction" level="all"
                 additivity="true">
             <AppenderRef ref="TxtFile"/>
-            <AppenderRef ref="Console"/>
+<!--            <AppenderRef ref="Console"/>-->
         </Logger>
         <Logger name="by.training.finalp.action.administrator.UserRoleUpgradeAction" level="all"
                 additivity="true">
             <AppenderRef ref="TxtFile"/>
-            <AppenderRef ref="Console"/>
+<!--            <AppenderRef ref="Console"/>-->
         </Logger>
         <Logger name="by.training.finalp.action.CatalogAction" level="all"
                 additivity="true">
             <AppenderRef ref="TxtFile"/>
-            <AppenderRef ref="Console"/>
+<!--            <AppenderRef ref="Console"/>-->
         </Logger>
         <Logger name="by.training.finalp.action.LoginAction" level="all"
                 additivity="true">
             <AppenderRef ref="TxtFile"/>
-            <AppenderRef ref="Console"/>
+<!--            <AppenderRef ref="Console"/>-->
         </Logger>
         <Logger name="by.training.finalp.action.LogoutAction" level="all"
                 additivity="true">
             <AppenderRef ref="TxtFile"/>
-            <AppenderRef ref="Console"/>
+<!--            <AppenderRef ref="Console"/>-->
         </Logger>
         <Logger name="by.training.finalp.action.RegisterAction" level="all"
                 additivity="true">
             <AppenderRef ref="TxtFile"/>
-            <AppenderRef ref="Console"/>
+<!--            <AppenderRef ref="Console"/>-->
         </Logger>
 
 
         <!-- Root Logger -->
         <Root level="all">
             <AppenderRef ref="TxtFile"/>
-            <AppenderRef ref="Console"/>
+<!--            <AppenderRef ref="Console"/>-->
         </Root>
     </Loggers>
 
