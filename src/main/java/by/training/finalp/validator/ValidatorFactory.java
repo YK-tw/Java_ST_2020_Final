@@ -16,11 +16,14 @@ public class ValidatorFactory {
         validators.put(User.class, UserValidator.class);
     }
 
-    @SuppressWarnings("unchecked")
     public static <Type extends Entity> Validator<Type> createValidator(Class<Type> entity) {
         try {
-            return (Validator<Type>) validators.get(entity).newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
+            if (validators.get(entity).equals(ProductValidator.class)) {
+                return (Validator<Type>) new ProductValidator();
+            } else {
+                return (Validator<Type>) new UserValidator();
+            }
+        } catch (Exception e) {
             return null;
         }
     }

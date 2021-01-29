@@ -35,45 +35,10 @@ public class ActionFromUriFilter implements Filter {
         actions.put("/user/downgrade", UserRoleDowngradeAction.class);
         actions.put("/user/upgrade", UserRoleUpgradeAction.class);
         actions.put("/user/delete", UserDeleteAction.class);
-
-//
-//        actions.put("/profile/edit", ProfileEditAction.class);
-//        actions.put("/profile/save", ProfileSaveAction.class);
-//
-//        actions.put("/reader/list", ReaderListAction.class);
-//        actions.put("/reader/edit", ReaderEditAction.class);
-//        actions.put("/reader/save", ReaderSaveAction.class);
-//        actions.put("/reader/delete", ReaderDeleteAction.class);
-//
-//        actions.put("/user/list", UserListAction.class);
-//        actions.put("/user/edit", UserEditAction.class);
-//        actions.put("/user/save", UserSaveAction.class);
-//        actions.put("/user/delete", UserDeleteAction.class);
-//
-//        actions.put("/author/list", AuthorListAction.class);
-//        actions.put("/author/edit", AuthorEditAction.class);
-//        actions.put("/author/save", AuthorSaveAction.class);
-//        actions.put("/author/delete", AuthorDeleteAction.class);
-//
-//        actions.put("/author/book/list", BookListAction.class);
-//        actions.put("/author/book/edit", BookEditAction.class);
-//        actions.put("/author/book/save", BookSaveAction.class);
-//        actions.put("/author/book/delete", BookDeleteAction.class);
-//
-//        actions.put("/search/book/form", SearchBookFormAction.class);
-//        actions.put("/search/book/result", SearchBookResultAction.class);
-//        actions.put("/author/book/usages", BookUsageListAction.class);
-//
-//        actions.put("/search/reader/form", SearchReaderFormAction.class);
-//        actions.put("/search/reader/result", SearchReaderResultAction.class);
-//        actions.put("/reader/usages", ReaderUsageListAction.class);
-//
-//        actions.put("/author/book/deliver", DeliverBookAction.class);
-//        actions.put("/author/book/return", ReturnBookAction.class);
     }
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
     }
 
     @Override
@@ -92,12 +57,40 @@ public class ActionFromUriFilter implements Filter {
                 actionName = uri.substring(beginAction);
             }
             Class<? extends Action> actionClass = actions.get(actionName);
+
             try {
-                Action action = actionClass.newInstance();
+                Action action;
+
+                if (actionClass.equals(MainAction.class)) {
+                    action = new MainAction();
+                } else if (actionClass.equals(RegisterAction.class)) {
+                    action = new RegisterAction();
+                } else if (actionClass.equals(LoginAction.class)) {
+                    action = new LoginAction();
+                } else if (actionClass.equals(LogoutAction.class)) {
+                    action = new LogoutAction();
+                } else if (actionClass.equals(CatalogAction.class)) {
+                    action = new CatalogAction();
+                } else if (actionClass.equals(ProductReadAction.class)) {
+                    action = new ProductReadAction();
+                } else if (actionClass.equals(ProductDeleteAction.class)) {
+                    action = new ProductDeleteAction();
+                } else if (actionClass.equals(ProductUpdateAction.class)) {
+                    action = new ProductUpdateAction();
+                } else if (actionClass.equals(ProductSaveAction.class)) {
+                    action = new ProductSaveAction();
+                } else if (actionClass.equals(UserRoleUpgradeAction.class)) {
+                    action = new UserRoleUpgradeAction();
+                } else if (actionClass.equals(UserRoleDowngradeAction.class)) {
+                    action = new UserRoleDowngradeAction();
+                } else {
+                    action = new UserDeleteAction();
+                }
+
                 action.setName(actionName);
                 httpRequest.setAttribute("action", action);
                 chain.doFilter(request, response);
-            } catch (InstantiationException | IllegalAccessException | NullPointerException e) {
+            } catch (NullPointerException e) {
                 logger.error("It is impossible to create action handler object", e);
                 httpRequest.setAttribute("error", String.format("Запрошенный адрес %s не может быть обработан сервером", uri));
                 httpRequest.getServletContext().getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);

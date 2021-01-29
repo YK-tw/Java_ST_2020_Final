@@ -28,19 +28,24 @@ public class ServiceFactoryImpl implements ServiceFactory {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    public <Type extends Service> Type getService(Class<Type> key) throws ServiceException {
+    public <Type extends Service> Type getService(Class<Type> key) {
         Class<? extends ServiceImpl> value = SERVICES.get(key);
+        ServiceImpl service;
         if (value != null) {
-            try {
-                Transaction transaction = factory.createTransaction();
-                ServiceImpl service = value.newInstance();
-                service.setTransaction(transaction);
-                return (Type) service;
-            } catch (InstantiationException | IllegalAccessException e) {
-                logger.error("It is impossible to instance service class", e);
-                throw new ServiceException(e);
+            Transaction transaction = factory.createTransaction();
+
+            if (value.equals(UserServiceImpl.class)) {
+                service = new UserServiceImpl();
+            } else if (value.equals(OrderServiceImpl.class)) {
+                service = new OrderServiceImpl();
+            } else if (value.equals(ProductServiceImpl.class)) {
+                service = new ProductServiceImpl();
+            } else {
+                service = new AttributeServiceImpl();
             }
+            service.setTransaction(transaction);
+
+            return (Type) service;
         }
         return null;
     }

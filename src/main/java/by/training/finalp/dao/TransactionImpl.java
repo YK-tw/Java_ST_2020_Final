@@ -2,6 +2,10 @@ package by.training.finalp.dao;
 
 import by.training.finalp.dao.mysql.*;
 import by.training.finalp.exception.DAOException;
+import by.training.finalp.service.AttributeServiceImpl;
+import by.training.finalp.service.OrderServiceImpl;
+import by.training.finalp.service.ProductServiceImpl;
+import by.training.finalp.service.UserServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,16 +32,24 @@ public class TransactionImpl implements Transaction {
         this.connection = connection;
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public <Type extends DAO<?>> Type createDao(Class<Type> key) throws DAOException {
         Class<? extends BaseDAO> value = classes.get(key);
+        BaseDAO dao;
         if (value != null) {
             try {
-                BaseDAO dao = value.newInstance();
+                if (value.equals(AttributeDAOImpl.class)) {
+                    dao = new AttributeDAOImpl();
+                } else if (value.equals(OrderDAOImpl.class)) {
+                    dao = new OrderDAOImpl();
+                } else if (value.equals(ProductDAOImpl.class)) {
+                    dao = new ProductDAOImpl();
+                } else {
+                    dao = new UserDAOImpl();
+                }
                 dao.setConnection(connection);
                 return (Type) dao;
-            } catch (InstantiationException | IllegalAccessException e) {
+            } catch (Exception e) {
                 logger.error("It is impossible to create data access object", e);
                 throw new DAOException(e);
             }
