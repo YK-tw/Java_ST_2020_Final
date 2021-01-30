@@ -108,7 +108,7 @@ public class ConnectionPool {
 
     private PooledConnection createConnection() throws SQLException, DAOException {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             return new PooledConnection(DriverManager.getConnection(url, user, password));
         } catch (ClassNotFoundException e) {
             throw new DAOException(e);

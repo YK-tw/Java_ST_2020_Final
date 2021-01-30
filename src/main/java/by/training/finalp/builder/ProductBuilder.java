@@ -36,6 +36,11 @@ public class ProductBuilder extends Builder {
         return this;
     }
 
+    public ProductBuilder withImgPath(final String imgPath) {
+        ((Product) entity).setImgPath(imgPath);
+        return this;
+    }
+
     public ProductBuilder withAttributes(final List<Attribute> attributes) {
         ((Product) entity).setAttributes(attributes);
         return this;

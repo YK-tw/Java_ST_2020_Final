@@ -170,7 +170,7 @@
                             <a class="card-link" href="${productUrl}?id=${product.id}">
                                 <div class="card">
                                     <div class="card__img">
-                                        <img src="${pageContext.request.contextPath}/img/main/Rectangle%2039.jpg"
+                                        <img src="${pageContext.request.contextPath}/img/main/download/${product.imgPath}"
                                              alt="product"/>
                                     </div>
                                     <div class="card__content">

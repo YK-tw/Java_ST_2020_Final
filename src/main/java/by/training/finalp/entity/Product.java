@@ -9,6 +9,7 @@ public class Product extends Entity {
     private boolean existence;
     private String description;
     private boolean visibility;
+    private String imgPath;
     /**
      * Ids of product attributes.
      */
@@ -56,6 +57,12 @@ public class Product extends Entity {
 
     public List<Attribute> getAttributes() {
         return attributes;
+    }
+
+    public String getImgPath() { return imgPath; }
+
+    public void setImgPath(final String gotImgPath) {
+        this.imgPath = gotImgPath;
     }
 
     public void setAttributes(List<Attribute> gotAttributes) {

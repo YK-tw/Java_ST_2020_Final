@@ -64,7 +64,7 @@ public class ProductServiceImpl extends ServiceImpl implements ProductService {
     }
 
     public List<Product> readFromTo(Integer from, Integer to) throws ServiceException {
-        List<Product> products = new ArrayList<>();
+        List<Product> products;
         try {
             ProductDAO productDAO = transaction.createDao(ProductDAO.class);
             products = productDAO.readFromTo(from, to);

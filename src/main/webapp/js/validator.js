@@ -20,7 +20,7 @@ function validateSaveProduct(form) {
 }
 
 function checkText(value) {
-    return checkRegexp(value, "^[a-zA-Z0-9\\s.,!\"'%\\^*?]+$");
+    return checkRegexp(value, "^[\p{isRussian}a-zA-Z0-9\\s.,!\"'%\\^*?]+$");
 }
 
 function checkPositiveNumber(value) {

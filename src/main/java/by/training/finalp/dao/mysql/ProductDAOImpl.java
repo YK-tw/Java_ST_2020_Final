@@ -20,7 +20,7 @@ public class ProductDAOImpl extends BaseDAO implements ProductDAO {
 
     @Override
     public Integer create(final Product entity) throws DAOException {
-        String sql = "INSERT INTO product (name, price, existence, description, visibility) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO product (name, price, existence, description, visibility, imageLink) VALUES (?, ?, ?, ?, ?, ?)";
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
@@ -30,6 +30,7 @@ public class ProductDAOImpl extends BaseDAO implements ProductDAO {
             statement.setBoolean(3, entity.getExistence());
             statement.setString(4, entity.getDescription());
             statement.setBoolean(5, entity.getVisibility());
+            statement.setString(6, entity.getImgPath());
             statement.executeUpdate();
             resultSet = statement.getGeneratedKeys();
             if (resultSet.next()) {
@@ -54,7 +55,7 @@ public class ProductDAOImpl extends BaseDAO implements ProductDAO {
 
     @Override
     public Product read(final Integer id) throws DAOException {
-        String sql = "SELECT name, price, existence, description, visibility FROM product WHERE id = ?";
+        String sql = "SELECT name, price, existence, description, visibility, imageLink FROM product WHERE id = ?";
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         ProductBuilder builder = new ProductBuilder();
@@ -69,6 +70,7 @@ public class ProductDAOImpl extends BaseDAO implements ProductDAO {
                 builder.withExistence(resultSet.getBoolean("existence"));
                 builder.withDescription(resultSet.getString("description"));
                 builder.withVisibility(resultSet.getBoolean("visibility"));
+                builder.withImgPath(resultSet.getString("imageLink"));
             }
             return builder.build();
         } catch (SQLException e) {
@@ -88,7 +90,7 @@ public class ProductDAOImpl extends BaseDAO implements ProductDAO {
 
     @Override
     public void update(final Product entity) throws DAOException {
-        String sql = "UPDATE product SET name = ?, price = ?, existence = ?, description = ?, visibility = ? WHERE id = ?";
+        String sql = "UPDATE product SET name = ?, price = ?, existence = ?, description = ?, visibility = ?, imageLink = ? WHERE id = ?";
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(sql);
@@ -97,7 +99,8 @@ public class ProductDAOImpl extends BaseDAO implements ProductDAO {
             statement.setBoolean(3, entity.getExistence());
             statement.setString(4, entity.getDescription());
             statement.setBoolean(5, entity.getVisibility());
-            statement.setInt(6, entity.getId());
+            statement.setString(6, entity.getImgPath());
+            statement.setInt(7, entity.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException(e);
@@ -167,7 +170,7 @@ public class ProductDAOImpl extends BaseDAO implements ProductDAO {
             }
         }
 
-        String sql = "INSERT INTO product_attribute (attribute_id, product_id) VALUES (?, ?)"; //TODO primary key on two keys
+        String sql = "INSERT INTO product_attribute (attribute_id, product_id) VALUES (?, ?)";
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
@@ -217,7 +220,7 @@ public class ProductDAOImpl extends BaseDAO implements ProductDAO {
 
     @Override
     public List<Product> readFromTo(Integer from, Integer to) throws DAOException {
-        String sql = "SELECT id, name, price, existence, description, visibility FROM product LIMIT ?, ?";
+        String sql = "SELECT id, name, price, existence, description, visibility, imageLink FROM product LIMIT ?, ?";
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         ProductBuilder builder;
@@ -235,6 +238,7 @@ public class ProductDAOImpl extends BaseDAO implements ProductDAO {
                 builder.withExistence(resultSet.getBoolean("existence"));
                 builder.withDescription(resultSet.getString("description"));
                 builder.withVisibility(resultSet.getBoolean("visibility"));
+                builder.withImgPath(resultSet.getString("imageLink"));
                 products.add(builder.build());
             }
             return products;

@@ -31,6 +31,7 @@ CREATE TABLE product
     existence   BOOLEAN      NOT NULL,
     description TEXT,
     visibility  BOOLEAN,
+    imageLink   TEXT,
     PRIMARY KEY (id)
 );
 

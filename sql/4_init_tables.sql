@@ -5,6 +5,6 @@ INSERT INTO user (
 	role
 ) VALUES (
 	"admin",
-	"admin", /* MD5 хэш пароля "admin" */
+	"admin",
 	2
 );

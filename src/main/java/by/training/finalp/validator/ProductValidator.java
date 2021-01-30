@@ -1,16 +1,8 @@
 package by.training.finalp.validator;
 
 import by.training.finalp.builder.ProductBuilder;
-import by.training.finalp.dao.mysql.AttributeDAO;
-import by.training.finalp.dao.mysql.AttributeDAOImpl;
-import by.training.finalp.entity.Attribute;
 import by.training.finalp.entity.Product;
-import by.training.finalp.exception.DAOException;
 import by.training.finalp.exception.IncorrectFormDataException;
-import by.training.finalp.exception.ServiceException;
-import by.training.finalp.service.AttributeService;
-import by.training.finalp.service.AttributeServiceImpl;
-import by.training.finalp.service.ServiceFactory;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -74,6 +66,7 @@ public class ProductValidator implements Validator<Product> {
                 throw new IncorrectFormDataException("visibility", parameter);
             }
         }
+
 
         return builder.build();
     }

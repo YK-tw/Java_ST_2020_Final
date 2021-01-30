@@ -23,7 +23,8 @@
 </head>
 <body>
 <c:url value="/product/save.html" var="productSaveUrl"/>
-<form action="${productSaveUrl}" method="post" onsubmit="return validateSaveProduct(this)">
+<form action="${productSaveUrl}" method="post" enctype="multipart/form-data"
+      onsubmit="return validateSaveProduct(this)">
     <input type="text" name="id" value="${product.id}" style="display: none">
     <label>Name</label>
     <input type="text" name="name" value="${product.name}">
@@ -35,6 +36,8 @@
     <input type="text" name="description" value="${product.description}">
     <label>Visibility</label>
     <input type="checkbox" name="visibility" checked="${product.visibility}">
+    <label>Image</label>
+    <input type="file" name="file"/>
     <c:forEach items="${attributes}" var="attribute">
         <div class="characteristic">
             <p class="charact-name"><fmt:message key="${attribute.name}"/>:</p>

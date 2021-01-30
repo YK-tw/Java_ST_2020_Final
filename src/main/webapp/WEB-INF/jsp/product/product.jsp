@@ -51,7 +51,7 @@
 <div class="container">
     <div class="row">
         <div class="images">
-            <img class="main-img" src="${pageContext.request.contextPath}/img/main/Rectangle%2039.jpg"/>
+            <img class="main-img" src="${pageContext.request.contextPath}/img/main/download/${product.imgPath}"/>
         </div>
         <div class="info">
             <p class="product-name">${product.name}</p>
@@ -99,7 +99,7 @@
                     <c:url value="/product/update.html" var="productUpdUrl"/>
                     <a href="${productUpdUrl}?id=${product.id}" class="change"><fmt:message key="change"/></a>
                     <a href="${productDelUrl}?id=${product.id}"
-                       onclick="return confirm()"
+                       onclick="return confirm('Are you sure?')"
                        class="change"><fmt:message key="delete"/></a>
                 </c:when>
             </c:choose>

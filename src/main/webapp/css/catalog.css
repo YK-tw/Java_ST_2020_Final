@@ -50,6 +50,7 @@ body {
 /*Card*/
 
 a.card-link {
+    width: 260px;
     display: inline-block;
     text-decoration: none;
     transition: all 0.2s ease-in;
@@ -62,10 +63,7 @@ a.card-link:hover {
 
 .card {
     width: 260px;
-}
-
-.card__img {
-
+    height: 260px;
 }
 
 .card__content {
@@ -279,4 +277,14 @@ input::-webkit-inner-spin-button {
 
 a {
     text-align: center;
+}
+
+.card__img {
+    width: 260px;
+    height: 260px;
+}
+
+.card__img > img{
+    width: 260px;
+    height: 260px;
 }
