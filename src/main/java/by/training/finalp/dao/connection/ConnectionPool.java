@@ -11,8 +11,9 @@ import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.locks.ReentrantLock;
 
-public class ConnectionPool {//TODO change synchronized
+public class ConnectionPool {
     private static Logger logger = LogManager.getLogger(ConnectionPool.class);
 
     private String url;
@@ -21,24 +22,29 @@ public class ConnectionPool {//TODO change synchronized
     private int maxSize;
     private int checkConnectionTimeout;
 
-    private BlockingQueue<PooledConnection> freeConnections = new LinkedBlockingQueue<>();
-    private Set<PooledConnection> usedConnections = new ConcurrentSkipListSet<>();
+    private final BlockingQueue<PooledConnection> freeConnections = new LinkedBlockingQueue<>();
+    private final  Set<PooledConnection> usedConnections = new ConcurrentSkipListSet<>();
+
+    private final ReentrantLock lock = new ReentrantLock();
 
     private ConnectionPool() {
     }
 
-    public synchronized Connection getConnection() throws DAOException {
+    public Connection getConnection() throws DAOException {
         PooledConnection connection = null;
         while (connection == null) {
             try {
                 if (!freeConnections.isEmpty()) {
                     connection = freeConnections.take();
+                    lock.lock();
                     if (!connection.isValid(checkConnectionTimeout)) {
                         try {
                             connection.getConnection().close();
+                            lock.unlock();
                         } catch (SQLException e) {
                         }
                         connection = null;
+                        lock.unlock();
                     }
                 } else if (usedConnections.size() < maxSize) {
                     connection = createConnection();
@@ -52,12 +58,14 @@ public class ConnectionPool {//TODO change synchronized
             }
         }
         usedConnections.add(connection);
+        lock.unlock();
         logger.debug(String.format("Connection was received from pool. Current pool size: %d used connections; %d free connection", usedConnections.size(), freeConnections.size()));
         return connection;
     }
 
-    synchronized void freeConnection(PooledConnection connection) {
+    void freeConnection(PooledConnection connection) {
         try {
+            lock.lock();
             if (connection.isValid(checkConnectionTimeout)) {
                 connection.clearWarnings();
                 connection.setAutoCommit(true);
@@ -65,6 +73,7 @@ public class ConnectionPool {//TODO change synchronized
                 freeConnections.put(connection);
                 logger.debug(String.format("Connection was returned into pool. Current pool size: %d used connections; %d free connection", usedConnections.size(), freeConnections.size()));
             }
+            lock.unlock();
         } catch (SQLException | InterruptedException e1) {
             logger.warn("It is impossible to return database connection into pool", e1);
             try {
@@ -106,7 +115,8 @@ public class ConnectionPool {//TODO change synchronized
         }
     }
 
-    public synchronized void destroy() {
+    public void destroy() {
+        lock.lock();
         usedConnections.addAll(freeConnections);
         freeConnections.clear();
         for (PooledConnection connection : usedConnections) {
@@ -116,6 +126,7 @@ public class ConnectionPool {//TODO change synchronized
             }
         }
         usedConnections.clear();
+        lock.unlock();
     }
 
     @Override
