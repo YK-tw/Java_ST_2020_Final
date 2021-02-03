@@ -10,7 +10,7 @@
 
 Схема базы данных:
 
-()
+(https://github.com/YK-tw/Java_ST_2020_Final/blob/main/image.png)
 
 **Приложение сделано с помощью технологий Servlet и JSP. При реализации страниц JSP были применены теги библиотеки JSTL.**
 
