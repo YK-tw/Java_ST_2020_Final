@@ -92,7 +92,8 @@
 
             </c:forEach>
 
-            <a class="order" href="#zatemnenie"><fmt:message key="order"/></a>
+            <a class="order" style="margin-top: 15px; display: block;" href="#zatemnenie"><fmt:message
+                    key="order"/></a>
             <c:choose>
                 <c:when test="${(sessionScope.authorizedUser.role.ordinal() != 0) && (sessionScope.authorizedUser != null)}">
                     <c:url value="/product/delete.html" var="productDelUrl"/>
