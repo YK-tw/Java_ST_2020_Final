@@ -92,7 +92,7 @@
 
             </c:forEach>
 
-            <button class="order"><fmt:message key="order"/></button>
+            <a class="order" href="#zatemnenie"><fmt:message key="order"/></a>
             <c:choose>
                 <c:when test="${(sessionScope.authorizedUser.role.ordinal() != 0) && (sessionScope.authorizedUser != null)}">
                     <c:url value="/product/delete.html" var="productDelUrl"/>
@@ -106,6 +106,64 @@
         </div>
     </div>
 </div>
+
+<style>
+    #zatemnenie {
+        background: rgba(102, 102, 102, 0.8);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+    }
+
+    #okno {
+        width: 300px;
+        height: 100px;
+        text-align: center;
+        padding: 15px;
+        border: 3px solid #0c4000;
+        color: white;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        background: #2D3D2E;
+        font-family: Raleway;
+    }
+
+    #zatemnenie:target {
+        display: block;
+    }
+
+    .close {
+        display: inline-block;
+        color: white;
+        padding: 0 12px;
+        margin: 10px;
+        text-decoration: none;
+        background: #646E44;
+        font-size: 14pt;
+        cursor: pointer;
+    }
+
+    .close:hover {
+        transition: all 0.2s ease-in-out;
+        transform: translateY(5px);
+    }
+
+</style>
+
+<div id="zatemnenie">
+    <div id="okno">
+        Для заказа позвоните по номеру ### или напишите на poynac@gmail.com<br>
+        <a href="#" class="close">Закрыть окно</a>
+    </div>
+</div>
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/script.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/validator.js"></script>
 </body>

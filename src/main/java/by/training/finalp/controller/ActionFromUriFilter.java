@@ -35,6 +35,8 @@ public class ActionFromUriFilter implements Filter {
         actions.put("/user/downgrade", UserRoleDowngradeAction.class);
         actions.put("/user/upgrade", UserRoleUpgradeAction.class);
         actions.put("/user/delete", UserDeleteAction.class);
+
+        actions.put("/notcreated", NotCreatedAction.class);
     }
 
     @Override
@@ -83,8 +85,10 @@ public class ActionFromUriFilter implements Filter {
                     action = new UserRoleUpgradeAction();
                 } else if (actionClass.equals(UserRoleDowngradeAction.class)) {
                     action = new UserRoleDowngradeAction();
-                } else {
+                } else if (actionClass.equals(UserDeleteAction.class)) {
                     action = new UserDeleteAction();
+                } else {
+                    action = new NotCreatedAction();
                 }
 
                 action.setName(actionName);

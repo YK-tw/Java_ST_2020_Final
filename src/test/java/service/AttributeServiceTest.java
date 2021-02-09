@@ -11,6 +11,7 @@ import by.training.finalp.exception.ServiceException;
 import by.training.finalp.service.AttributeService;
 import by.training.finalp.service.ServiceFactoryImpl;
 import by.training.finalp.service.UserService;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

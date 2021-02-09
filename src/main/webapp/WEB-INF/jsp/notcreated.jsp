@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: YK-TW
-  Date: 11.01.2021
-  Time: 21:10
+  Date: 07.02.2021
+  Time: 23:11
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,9 +12,7 @@
 <fmt:setLocale value="${cookie['lang'].value}"/>
 <fmt:setBundle basename='locale.locale'/>
 
-
-<!DOCTYPE html>
-<html lang="${cookie['lang'].value}">
+<html>
 <head>
     <meta charset="utf-8"/>
     <title>POYNAC</title>
@@ -63,26 +61,10 @@
     <a href="${notCreatedUrl}" class="header-link-list"><fmt:message key="certificates"/></a>
     <a href="${notCreatedUrl}" class="header-link-list">SALE</a>
 </div>
-<div class="choose-block">
-    <a href="${catalogUrl}?attribute=earrings&page=1" class="choose-section first">
-        <img src="${pageContext.request.contextPath}/img/main/Rectangle12.jpg">
-        <p><fmt:message key="earrings"/></p></a>
-    <a href="${catalogUrl}?attribute=ring&page=1" class="choose-section first">
-        <img src="${pageContext.request.contextPath}/img/main/Rectangle13.jpg">
-        <p><fmt:message key="rings"/></p></a>
-    <a href="${catalogUrl}?attribute=pendant&page=1" class="choose-section first">
-        <img src="${pageContext.request.contextPath}/img/main/Rectangle14.jpg">
-        <p><fmt:message key="pendants"/></p></a>
-    <a href="${catalogUrl}?attribute=chain&page=1" class="choose-section">
-        <img src="${pageContext.request.contextPath}/img/main/Rectangle15.jpg">
-        <p><fmt:message key="chains"/></p></a>
-    <a href="${catalogUrl}?attribute=cuff&page=1" class="choose-section">
-        <img src="${pageContext.request.contextPath}/img/main/Rectangle16.jpg">
-        <p><fmt:message key="cuffs"/></p></a>
-    <a href="${catalogUrl}?attribute=bracelet&page=1" class="choose-section">
-        <img src="${pageContext.request.contextPath}/img/main/Rectangle17.jpg">
-        <p><fmt:message key="bracelets"/></p></a>
-</div>
+
+<p style="color: white; font-family: Raleway; margin: 100px 30%; width: 40%; text-align:center; font-size: 30px;">
+    Страница в разработке</p>
+
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/script.js"></script>
 </body>
