@@ -120,18 +120,11 @@ public class UserDAOImpl extends BaseDAO implements UserDAO {
     @Override
     public void delete(final Integer id) throws DAOException {
         String sql = "DELETE FROM user WHERE id = ?";
-        PreparedStatement statement = null;
-        try {
-            statement = connection.prepareStatement(sql);
+        try (PreparedStatement statement = connection.prepareStatement(sql)){
             statement.setInt(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException(e);
-        } finally {
-            try {
-                statement.close();
-            } catch (SQLException | NullPointerException e) {
-            }
         }
     }
 
